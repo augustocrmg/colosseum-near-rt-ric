@@ -41,6 +41,7 @@ cd $OURDIR
 tagvers=`git log --pretty=format:"%h" -n 1`
 
 # build e2term
+$SUDO docker login -u ${root} -p ${ChangeMe} ${e2term:latest}
 $SUDO docker image inspect e2term:latest >/dev/null 2>&1
 if [ ! $? -eq 0 ]; then
     cd e2/RIC-E2-TERMINATION
@@ -54,6 +55,7 @@ if [ ! $? -eq 0 ]; then
 fi
 
 # build e2mgr
+$SUDO docker login -u ${root} -p ${ChangeMe} ${e2mgr:latest}
 $SUDO docker image inspect e2mgr:latest >/dev/null 2>&1
 if [ ! $? -eq 0 ]; then
     cd e2mgr/E2Manager
@@ -67,6 +69,7 @@ if [ ! $? -eq 0 ]; then
 fi
 
 # build e2rtmansim
+$SUDO docker login -u ${root} -p ${ChangeMe} ${e2rtmansim:latest}
 $SUDO docker image inspect e2rtmansim:latest >/dev/null 2>&1
 if [ ! $? -eq 0 ]; then
     cd e2mgr/tools/RoutingManagerSimulator
